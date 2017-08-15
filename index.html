@@ -2,7 +2,7 @@
 <head>
   <meta charset="utf-8">
 
-  <title>Title</title>
+  <title>Taco Trucks on Every Corner</title>
 
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
@@ -17,8 +17,10 @@
   <!-- Firebase CDN -->
   <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
 
+  <!-- css -->
+
   <!-- js -->
-  <script src="app.js"></script>
+  <script src="js/main.js"></script>
 
   <!-- new -->
   <script src="https://www.gstatic.com/firebasejs/4.2.0/firebase.js"></script>
@@ -32,33 +34,21 @@
   <nav class="navbar navbar-inverse">
     <div class="container-fluid">
       <div class="navbar-header text-danger">
-        <h1>Title</h1>
+        <h1>Taco Trucks on Every Corner</h1>
       </div>
     </div>
   </nav>
 
+<div id="popUp" class="loader ">
+
+        </div>
   <div class="container">
     <div class="panel-group">
       <div class="panel panel-danger">
-        <div class="panel-heading">Header</div>
+        <div class="panel-heading">Hit me up!</div>
         <div class="panel-body">
-          <form action="" id="message-form">
-            <div class="form-group">
-              <label>Message:</label>
-              <textarea id="message" type="text" class="form-control"></textarea>
-            </div>
-            <button class="btn btn-default">Upload a photo</button>
-          </form>
-        </div>
-      </div>
-    </div>
-
-    <div class="panel-group">
-      <div class="panel panel-default">
-        <div class="panel-heading">Message Board</div>
-        <div class="panel-body">
-          <ul class="message-board">
-          </ul>
+          <button class="findAllTheTacos">Show me some taco trucks</button>
+          <div id="taco-trucks"></div>
         </div>
       </div>
     </div>
