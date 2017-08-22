@@ -1,4 +1,5 @@
-    // Initialize Firebase
+$(function() {
+// Initialize Firebase
 
 var config = {
     apiKey: "AIzaSyDhgbnhm3x8CvStik5r9rN-2Jqk2Nw3H_I",
@@ -11,8 +12,14 @@ var config = {
   firebase.initializeApp(config);
   
   var messageAppReference = firebase.database();
-    
-$(document).ready(function() {
+
+  var yelpUrl = 'https://api.yelp.com/v2/search?term=tacos=Los+Angeles';
+  //The regular feed did not have photos so I had to use the top stories feed
+  var yelpSecretKey = config.yelp_sdk_key;
+  yelpUrl += '?' + $.param({
+    'api-key': yelpSecretKey
+  });
+  
 
   $(document).on('click','.findAllTheTacos',function(e){
   //function findAllTheTacos() {
@@ -27,10 +34,10 @@ $(document).ready(function() {
       var latitude  = position.coords.latitude;
       var longitude = position.coords.longitude;
 
-      output.innerHTML = '<p>Latitude is ' + latitude + '° <br>Longitude is ' + longitude + '°</p>';
+      output.innerHTML = '<p>Your latitude is ' + latitude + '° <br>Your longitude is ' + longitude + '°</p>';
 
       var img = new Image();
-      img.src = "https://maps.googleapis.com/maps/api/staticmap?center=" + latitude + "," + longitude + "&zoom=13&size=300x300&sensor=false";
+      img.src = "https://maps.googleapis.com/maps/api/staticmap?center=" + latitude + "," + longitude + "&zoom=13&size=800x500&sensor=false";
 
       output.appendChild(img);
     }
