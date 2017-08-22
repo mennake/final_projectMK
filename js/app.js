@@ -35,7 +35,7 @@ yelpSearch = function() {
     }
   };
 
-  var accessor = {
+  var access = {
       consumerSecret : auth.consumerSecret,
       tokenSecret : auth.accessTokenSecret
   };
@@ -46,7 +46,7 @@ yelpSearch = function() {
     // console.log(search_terms[i]);
   }
 
-  //I had to use OAuth
+  //I had to use OAuth2
   parameters.push(['callback', 'allTheTacos']);
   parameters.push(['oauth_consumer_key', auth.consumerKey]);
   parameters.push(['oauth_consumer_secret', auth.consumerSecret]);
@@ -60,7 +60,7 @@ yelpSearch = function() {
   };
 
   OAuth.setTimestampAndNonce(message);
-  OAuth.SignatureMethod.sign(message, accessor);
+  OAuth.SignatureMethod.sign(message, access);
 
   var parameterMap = OAuth.getParameterMap(message.parameters);
       
@@ -71,16 +71,16 @@ yelpSearch = function() {
       'jsonpCallback' : 'allTheTacos',
       'cache': true
   })
-  .done(function(data, textStatus, jqXHR) {
-      searchResultsData = JSON.stringify(jqXHR);
+  .done(function(data, textStatus, yelpSearchResults) {
+      searchResultsData = JSON.stringify(yelpSearchResults);
 
-      console.log('success[' + data + '], status[' + textStatus + '], jqXHR[' + searchResultsData + ']');
+      console.log('success[' + data + '], status[' + textStatus + '], yelpSearchResults[' + searchResultsData + ']');
 
       parseSearchResults(JSON.parse(searchResultsData)["responseJSON"]);
     }
   )
-  .fail(function(jqXHR, textStatus, errorThrown) {
-      console.log('error[' + errorThrown + '], status[' + textStatus + '], jqXHR[' + JSON.stringify(jqXHR) + ']');
+  .fail(function(yelpSearchResults, textStatus, errorThrown) {
+      console.log('error[' + errorThrown + '], status[' + textStatus + '], yelpSearchResults[' + JSON.stringify(yelpSearchResults) + ']');
       }
   );
 
